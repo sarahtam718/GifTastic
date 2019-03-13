@@ -1,0 +1,46 @@
+body {
+    font-family: 'Kodchasan', sans-serif; 
+    margin: 20px;
+}
+
+h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    background-color: lightblue;
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.animal-button {
+    background-color: rgb(6, 61, 6);
+    font-size: 16px;
+    color: white;
+    margin-top: 10px;
+    margin-right: 10px;
+    border: darkgreen;
+    height: 40px;
+    width: 150px;
+    font-weight: bold;
+}
+
+form {
+    float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+#add-animal {
+    font-size: 16px;
+    color: #57acc9;
+    margin: auto;
+    height: 40px;
+    width: 80px;
+    font-weight: bold;
+}
+
+#gifs-container {
+    margin-left: 20px;
+}
