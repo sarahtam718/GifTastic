@@ -7,7 +7,7 @@ This project is a simple "search" engine that pulls data from an API and display
 This project helped the developer continue hone her jQuery skills, scoping, logic. Additionally, dev was able to work on her ajax calls using 3rd party APIs.
 
 # How users can get started with the project
-Click a button :)
+Click a button to see some cute/weird gifs :)
 
 # Who maintains and contributes to the project
 github user: sarahtam718

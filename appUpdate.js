@@ -5,46 +5,57 @@ $(document).ready(function () {
 
     // function to make buttons and add to page
     function makeButtons(arrayToUse, classToAdd, areaToAddTo) {
-        // first, empty out 
+        // first, empty out the buttons 
         $(areaToAddTo).empty();
 
+        // make a button array
         for (var i = 0; i < arrayToUse.length; i++) {
+            // make a new button
             var a = $("<button>");
             a.addClass(classToAdd);
             a.attr("data-type", arrayToUse[i]);
+            // add text for button to array
             a.text(arrayToUse[i]);
+            // add the button to the button container
             $(areaToAddTo).append(a);
         }
     }
-
+    // when you click a button...
     $(document).on("click", ".animal-button", function () {
+        // clear the gifs from before
         $("#animals").empty();
+        // make sure we only see the "still" images
         $(".animal-button").removeClass("active");
+        // so when we click on them later, the active class is activated...
         $(this).addClass("active");
 
+        // whatever is on the button is going to be searched!
         var type = $(this).attr("data-type");
+        // here's the formula we use to search for what the user wants from the API
         var queryURL =
             "http://api.giphy.com/v1/gifs/search?q=" +
             type +
             "&limit=10&api_key=NsbejyNo6tEoJV62w6VBgCbzL1YTGJBS";
-
+        // calling the API...
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (response) {
+            // we want what is specifically inside the data object...
             var results = response.data;
-
+            // loop through the API to get what we need (rating & images/gifs)
             for (var i = 0; i < results.length; i++) {
+                // making a div to put the rating & gif/image for each gif
                 var animalDiv = $('<div class="animal-item">');
-
+                // find the rating when we loop through
                 var rating = results[i].rating;
-
+                // show the rating in a p element...
                 var p = $("<p>").text("Rating: " + rating);
-
+                // variables representing two states of the gif (moving or not)
                 var animated = results[i].images.fixed_height.url;
                 var still = results[i].images.fixed_height_still.url;
 
-                // animated v. still
+                // animated v. still - sticking both animated & still on the image so that we can flip back and forth
                 var animalImage = $("<img>");
                 animalImage.attr("src", still);
                 animalImage.attr("data-still", still);
@@ -61,10 +72,10 @@ $(document).ready(function () {
             }
         });
     });
-
+    // when clicking on the image/gif...
     $(document).on("click", ".animal-image", function () {
         var state = $(this).attr("data-state");
-
+        // flip flop between two links by changing the "active" attribute (still or animated)
         if (state === "still") {
             $(this).attr("src", $(this).attr("data-animate"));
             $(this).attr("data-state", "animate");
@@ -93,6 +104,6 @@ $(document).ready(function () {
         // now, run the function to make all the buttons in the array!
         makeButtons(animals, "animal-button", ".animal-buttons");
     });
-
+    // have starting buttons from array on start page when first loaded
     makeButtons(animals, "animal-button", ".animal-buttons");
 });
