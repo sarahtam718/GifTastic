@@ -1,3 +1,5 @@
+// to preface, i worked on this hw a lot with Haddassah, so there's shared code from the solution
+
 $(document).ready(function () {
     // starting array with random animals
     let animals = ["unicorn", "dolphin", "lemur", "llama"];
